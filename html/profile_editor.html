@@ -63,8 +63,8 @@
                 <div class="col-4 justify-content-center">
                     Username
                 </div>
-                <div class="col-8 justify-content-start">
-                    icogen_a
+                <div class="col-8 justify-content-start" onclick="">
+                    <p>icogen_a</p>
                     <hr class="" style="border: 1px solid black;">
                 </div>
             </div>
@@ -74,7 +74,7 @@
                     Bio
                 </div>
                 <div class="col-8 justify-content-start">
-                    Undergraduate at VNU-HCMUS University of Science
+                    <p>Undergraduate at VNU-HCMUS University of Science</p>
                     <hr class="" style="border: 1px solid black;">
                 </div>
             </div>
@@ -84,7 +84,7 @@
                     Email
                 </div>
                 <div class="col-8 justify-content-start">
-                    icogen_adam@dmail.com
+                    <p>icogen_adam@dmail.com</p>
                 </div>
             </div>
          </div>
@@ -94,5 +94,27 @@
     <footer>
         
     </footer>
+    <script>
+         document.addEventListener('DOMContentLoaded', () => {
+            const editableFields = document.querySelectorAll('.col-8 p');
+
+            editableFields.forEach(field => {
+                field.addEventListener('click', () => {
+                    if (field.querySelector('input')) return;
+
+                    const text = field.innerText.trim();
+                    field.innerHTML = `<input type="text" class="form-control" value="${text}">`;
+
+                    const input = field.querySelector('input');
+                    input.focus();
+
+                    input.addEventListener('blur', () => {
+                        const newValue = input.value.trim();
+                        field.innerHTML = newValue;
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>

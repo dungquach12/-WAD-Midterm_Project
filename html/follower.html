@@ -87,9 +87,11 @@
             while(i--) {
                 let name = nameList[i];
                 if (name) {
-                    var HTML_element = `
-                        <div class="container-fluid user_display">
-                            <div class="row justify-content-evenly py-2 rounded">
+                    const user = document.createElement('div');
+                    user.className = "container-fluid user_display";
+                    user.innerHTML = 
+                    `
+                        <div class="row justify-content-evenly py-2 rounded">
                             <img 
                                 class="col-3 rounded-circle img-fluid" 
                                 src="../imgs/placeholder_profile.jpg" 
@@ -101,11 +103,10 @@
                             <button class="col-4 btn btn-outline-dark my-2" role="button" type="button" onclick="onClicked(event)">
                                 Follow
                             </button>
-                            </div>
                         </div>
                     `;
                     targetDiv = document.querySelector('#following_list');
-                    targetDiv.innerHTML += HTML_element;
+                    targetDiv.appendChild(user);
                 }
             }
         }
