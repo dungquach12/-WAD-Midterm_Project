@@ -32,37 +32,19 @@
                 Back
             </button>
             <span class="col-4 text-center">Following</span>
-            <button class="btn btn-sm col-4 text-primary" type="button" role="button">
-                Follow All
-            </button>
+            <div class="col-4"></div>
         </nav>
         
         <!-- Search Bar -->
         <div class="container">
             <form class="form-inline">
-                <input class="form-control" type="search" placeholder="Search">
+                <input class="form-control" type="search" placeholder="Search" oninput="userFilter(this.value)">
             </form>
         </div> 
 
         <!-- Following List -->
         <div class="my-2" id="following_list">
             <!-- Person -->
-            <div class="container" id="following">
-                <div class="row py-2 rounded">
-                    <img 
-                        class="col-3 rounded-circle img-fluid" 
-                        src="../imgs/placeholder_profile.jpg" 
-                        alt="profile_image"
-                    >
-                    <span class="col-6 align-self-center" style="font-size: 1em;">
-                        thang123
-                    </span>
-                    <button class="col-3 btn btn-outline-dark my-2" role="button" type="button">
-                        Follow
-                    </button>
-                </div>
-            </div>
-            
         </div>
     </main>
 
@@ -72,6 +54,30 @@
     </footer>
 
     <script>
+        function onClicked(e) {
+            e.preventDefault();
+            let button = e.target;
+            if (button.innerText == "Follow") {
+                const newButton = document.createElement("button");
+                newButton.className = "col-4 btn btn-outline-danger my-2";
+                newButton.setAttribute("role", "button");
+                newButton.setAttribute("type", "button");
+                newButton.innerText = "Unfollow";
+                newButton.onclick = onClicked;
+
+                button.parentNode.replaceChild(newButton, button);
+            } else {
+                const newButton = document.createElement("button");
+                newButton.className = "col-4 btn btn-outline-dark my-2";
+                newButton.setAttribute("role", "button");
+                newButton.setAttribute("type", "button");
+                newButton.innerText = "Follow";
+                newButton.onclick = onClicked;
+
+                button.parentNode.replaceChild(newButton, button);
+            }
+        }
+
         function loadFollower() {
             nameList = ['thang123', 'shiraishi_an', 'azusawa_kohane', 'dung_h', 'caliope_m', 'number_b', 'thermosento', 'daVincy'];
             console.log(name);
@@ -81,17 +87,17 @@
                 let name = nameList[i];
                 if (name) {
                     var HTML_element = `
-                        <div class="container" id="following">
-                            <div class="row py-2 rounded">
+                        <div class="container-fluid user_display">
+                            <div class="row justify-content-evenly py-2 rounded">
                             <img 
                                 class="col-3 rounded-circle img-fluid" 
                                 src="../imgs/placeholder_profile.jpg" 
                                 alt="profile_image"
                             >
-                            <span class="col-6 align-self-center" style="font-size: 1em;">
+                            <span class="col-5 align-self-center" style="font-size: 0.8em;">
                                 ${name}
                             </span>
-                            <button class="col-3 btn btn-outline-dark my-2" role="button" type="button">
+                            <button class="col-4 btn btn-outline-dark my-2" role="button" type="button" onclick="onClicked(event)">
                                 Follow
                             </button>
                             </div>
@@ -101,6 +107,19 @@
                     targetDiv.innerHTML += HTML_element;
                 }
             }
+        }
+
+        function userFilter(input) {
+            let users = document.querySelectorAll(".user_display");
+
+            users.forEach(user => {
+                let name = user.querySelector("span");
+                if (name.textContent.toLocaleLowerCase().includes(input.toLocaleLowerCase())) {
+                    user.style.display = 'block';
+                } else {
+                    user.style.display = 'none';
+                }
+            });
         }
     </script>
 </body>

@@ -18,7 +18,7 @@
     <!-- Script to load header and footer-->
     <script src="../script/script.js"></script>
 </head>
-<body style="margin: 70px 0 100px 0;">
+<body style="margin: 70px 0 100px 0;" onload="loadNotification()">
     <!-- Header -->
     <header>
     
@@ -32,7 +32,7 @@
                 Back
             </button>
             <span class="col-4 text-center">Notification</span>
-            <button class="btn btn-sm col-4 text-danger" type="button" role="button">
+            <button class="btn btn-sm col-4 text-danger" type="button" role="button" onclick="deleteAll(event)">
                 Delete All
             </button>
         </nav>
@@ -40,9 +40,9 @@
         <!-- Notification Section-->
         <div class="my-2">
             <!-- New -->
-            <div class="container" id="News">
+            <div class="container" id="news">
                 <p>News</p>
-                <div class="row py-2 rounded" id="notification" style="background-color: lightgrey;">
+                <div class="row py-2 rounded align-items-center" style="background-color: lightgrey;">
                     <img 
                         class="col-3 rounded-circle img-fluid" 
                         src="../imgs/placeholder_profile.jpg" 
@@ -52,55 +52,18 @@
                         thang123 liked your thread
                         <span style="color: white;">1h</span>
                     </span>
-                    <button class="col-2 btn" role="button" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                        </svg>
-                    </button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash col-2" viewBox="0 0 16 16" onclick="deleteNotification(event)">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                    </svg>
                 </div>
             </div>
             <!-- Line seperator -->
             <hr class="m-3" style="border: 1px solid black;">
             
             <!-- Today -->
-            <div class="container" id="Today">
+            <div class="container" id="today">
                 <p>Today</p>
-                <div class="row py-2 rounded " id="notification">
-                    <img 
-                        class="col-3 rounded-circle img-fluid" 
-                        src="../imgs/placeholder_profile.jpg" 
-                        alt="profile_image"
-                    >
-                    <span class="col-7" style="font-size: 0.8em;">
-                        shiraishi_an commented your thread
-                        <span style="color: lightgray;">1h</span>
-                    </span>
-                    <button class="col-2 btn" role="button" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                        </svg>
-                    </button>
-                </div>
-
-                <div class="row py-2 my-1 rounded" id="notification">
-                    <img 
-                        class="col-3 rounded-circle img-fluid" 
-                        src="../imgs/placeholder_profile.jpg" 
-                        alt="profile_image"
-                    >
-                    <span class="col-7" style="font-size: 0.8em;">
-                        azusawa_kohane liked your thread
-                        <span style="color: lightgray;">1h</span>
-                    </span>
-                    <button class="col-2 btn" role="button" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                        </svg>
-                    </button>
-                </div>
             </div>
             <!-- Line seperator -->
             <hr class="m-3" style="border: 1px solid black;">
@@ -108,85 +71,15 @@
 
 
             <!-- This week -->
-            <div class="container" id="This week">
+            <div class="container" id="this_week">
                 <p>This week</p>
-                <div class="row py-2 rounded " id="notification">
-                    <img 
-                        class="col-3 rounded-circle img-fluid" 
-                        src="../imgs/placeholder_profile.jpg" 
-                        alt="profile_image"
-                    >
-                    <span class="col-7" style="font-size: 0.8em;">
-                        dung_h commented your thread
-                        <span style="color: lightgray;">1h</span>
-                    </span>
-                    <button class="col-2 btn" role="button" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                        </svg>
-                    </button>
-                </div>
-
-                <div class="row py-2 my-1 rounded" id="notification">
-                    <img 
-                        class="col-3 rounded-circle img-fluid" 
-                        src="../imgs/placeholder_profile.jpg" 
-                        alt="profile_image"
-                    >
-                    <span class="col-7" style="font-size: 0.8em;">
-                        caliope_m liked your thread
-                        <span style="color: lightgray;">1h</span>
-                    </span>
-                    <button class="col-2 btn" role="button" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                        </svg>
-                    </button>
-                </div>
             </div>
             <!-- Line seperator -->
             <hr class="m-3" style="border: 1px solid black;">
             
             <!-- This month -->
-            <div class="container" id="This month">
+            <div class="container" id="this_month">
                 <p>This month</p>
-                <div class="row py-2 rounded " id="notification">
-                    <img 
-                        class="col-3 rounded-circle img-fluid" 
-                        src="../imgs/placeholder_profile.jpg" 
-                        alt="profile_image"
-                    >
-                    <span class="col-7" style="font-size: 0.8em;">
-                        number_b commented your thread
-                        <span style="color: lightgray;">1h</span>
-                    </span>
-                    <button class="col-2 btn" role="button" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                        </svg>
-                    </button>
-                </div>
-
-                <div class="row py-2 my-1 rounded" id="notification">
-                    <img 
-                        class="col-3 rounded-circle img-fluid" 
-                        src="../imgs/placeholder_profile.jpg" 
-                        alt="profile_image"
-                    >
-                    <span class="col-7" style="font-size: 0.8em;">
-                        thermosento liked your thread
-                        <span style="color: lightgray;">1h</span>
-                    </span>
-                    <button class="col-2 btn" role="button" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                        </svg>
-                    </button>
-                </div>
             </div>
             <!-- Line seperator -->
             <hr class="m-3" style="border: 1px solid black;">
@@ -198,5 +91,65 @@
     <footer>
         
     </footer>
+    <script>
+        function loadNotification() {
+            nameList = ['thang123', 'shiraishi_an', 'azusawa_kohane', 'dung_h', 'caliope_m', 'number_b', 'thermosento', 'daVincy'];
+            timeStamp = [1, 2, 25, 30, 45, 200, 225, 300];
+            texts = ["liked your thread", "commented on your thread"]
+
+            i = nameList.length;
+            while(i--) {
+                let name = nameList[i];
+                let action = (i%2 === 1) ? texts[0] : texts[1]
+                let time = timeStamp[i];
+                if (name) {
+                    const notification_element = document.createElement('div');
+                    notification_element.className = "row align-items-center rounded py-2";
+                    notification_element.innerHTML = 
+                    `
+                        <img 
+                            class="col-3 rounded-circle img-fluid" 
+                            src="../imgs/placeholder_profile.jpg" 
+                            alt="profile_image"
+                        >
+                        <span class="col-7" style="font-size: 0.8em;">
+                            ${name} ${action}
+                            <span style="color: gray;">${time}h</span>
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash col-2" viewBox="0 0 16 16" onclick="deleteNotification(event)">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                        </svg>
+                    `;
+                    if (time <= 24) {
+                        targetDiv = document.querySelector('#today');
+                        targetDiv.appendChild(notification_element)
+                    } else if (time <= 168) {
+                        targetDiv = document.querySelector('#this_week');
+                        targetDiv.appendChild(notification_element)
+                    } else {
+                        targetDiv = document.querySelector('#this_month');
+                        targetDiv.appendChild(notification_element)
+                    }
+                }
+            }
+        }
+
+        function deleteNotification(e) {
+            e.preventDefault();
+            const notificationElement = e.target.closest('.row');
+            if (notificationElement) {
+                notificationElement.remove();
+            }
+        }
+
+        function deleteAll(e) {
+            e.preventDefault();
+            document.querySelectorAll(".row.align-items-center.rounded.py-2").forEach((item) => {
+                item.remove();
+            })
+        }
+
+    </script>
 </body>
 </html>
