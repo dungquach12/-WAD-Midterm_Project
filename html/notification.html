@@ -42,7 +42,7 @@
             <!-- New -->
             <div class="container" id="news">
                 <p>News</p>
-                <div class="row py-2 rounded align-items-center" style="background-color: lightgrey;">
+                <div class="row py-2 rounded align-items-center" style="background-color: lightgrey;" onclick="readNew(event)">
                     <img 
                         class="col-3 rounded-circle img-fluid" 
                         src="../imgs/placeholder_profile.jpg" 
@@ -148,6 +148,18 @@
             document.querySelectorAll(".row.align-items-center.rounded.py-2").forEach((item) => {
                 item.remove();
             })
+        }
+
+        function readNew(e) {
+            e.preventDefault();
+            const news = e.target.closest('.row');
+            if (news) {
+                news.style.backgroundColor = 'transparent';
+                const timeElement = news.querySelector('span span'); 
+                if (timeElement) {
+                    timeElement.style.color = 'gray';
+                }
+            }
         }
 
     </script>
